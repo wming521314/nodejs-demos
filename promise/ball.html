@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ball{
+            width: 40px;
+            height: 40px;
+        }
+        .ball_1{
+            background: red;
+        }
+        .ball_2{
+            background: yellow;
+        }
+        .ball_3{
+            background: green;
+        }
+
+    </style>
+    <script>
+        var ball_1 = document.querySelector('.ball_1')
+        var ball_2 = document.querySelector('.ball_2')
+        var ball_3 = document.querySelector('.ball_3')
+
+        function antimate(ball,distance,callback){
+            setTimeout(function(){
+                var margin_left = parseInt(ball.style.marginLeft,10)
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class=" ball ball_1"></div>
+    <div class=" ball ball_2"></div>
+    <div class=" ball ball_3"></div>
+</body>
+</html>
