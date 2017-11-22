@@ -7,6 +7,7 @@
         .ball{
             width: 40px;
             height: 40px;
+            border-radius: 20px;
         }
         .ball_1{
             background: red;
@@ -18,22 +19,50 @@
             background: green;
         }
 
-    </style>
-    <script>
-        var ball_1 = document.querySelector('.ball_1')
-        var ball_2 = document.querySelector('.ball_2')
-        var ball_3 = document.querySelector('.ball_3')
 
-        function antimate(ball,distance,callback){
-            setTimeout(function(){
-                var margin_left = parseInt(ball.style.marginLeft,10)
-            })
-        }
-    </script>
+    </style>
 </head>
 <body>
-    <div class=" ball ball_1"></div>
-    <div class=" ball ball_2"></div>
-    <div class=" ball ball_3"></div>
+    <div class=" ball ball_1" style="margin-left: 0px;"></div>
+    <div class=" ball ball_2" style="margin-left: 0px;"></div>
+    <div class=" ball ball_3" style="margin-left: 0px;"></div>
 </body>
+<script>
+    var ball_1 = document.querySelector('.ball_1')
+    var ball_2 = document.querySelector('.ball_2')
+    var ball_3 = document.querySelector('.ball_3')
+
+    function animate(ball,distance,callback){
+
+        setTimeout(function(){
+            var margin_left = parseInt(ball.style.marginLeft)
+            console.log(margin_left)
+            if(margin_left == distance){
+                callback && callback()
+            }else if(margin_left < distance){
+                margin_left++
+            }else{
+                margin_left--
+            }
+            ball.style.marginLeft = margin_left + 'px'
+            animate(ball,distance,callback)
+        },13)
+    }
+    //animate(ball_1,10,function(){})
+    console.log("aaa");
+    animate(ball_1,100,function(){
+        animate(ball_2,200,function(){
+            animate(ball_3,300,function(){
+                animate(ball_1,150,function(){
+                    animate(ball_2,150,function(){
+                        animate(ball_3,150,function(){
+                            //
+                        })
+                    })
+                })
+            })
+        })
+    })
+    console.log("bbb");
+</script>
 </html>
