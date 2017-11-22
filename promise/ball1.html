@@ -21,7 +21,7 @@
 
 
     </style>
-    <script src="./../node_modules/js/browser/bluebird.js"></script>
+    <!--<script type='text/javascript' src="./bluebird.js"></script>-->
 </head>
 <body>
     <div class=" ball ball_1" style="margin-left: 0px;"></div>
@@ -29,29 +29,30 @@
     <div class=" ball ball_3" style="margin-left: 0px;"></div>
 </body>
 <script>
-    var Promise = window.Promise
-    var ball_1 = document.querySelector('.ball_1')
-    var ball_2 = document.querySelector('.ball_2')
-    var ball_3 = document.querySelector('.ball_3')
+    var Promise = window.Promise;
+    var ball_1 = document.querySelector('.ball_1');
+    var ball_2 = document.querySelector('.ball_2');
+    var ball_3 = document.querySelector('.ball_3');
 
     function promiseAnimate(ball,distance){
         return new Promise(function(resolve,reject){
             function _animate(){
                 setTimeout(function(){
-                    var margin_left = parseInt(ball.style.marginLeft)
-                    console.log(margin_left)
+                    var margin_left = parseInt(ball.style.marginLeft);
+
                     if(margin_left == distance){
-                        resolve
+                        resolve();
                     }else if(margin_left < distance){
-                        margin_left++
+                        margin_left++;
                     }else{
-                        margin_left--
+                        console.log(margin_left);
+                        margin_left--;
                     }
-                    ball.style.marginLeft = margin_left + 'px'
-                    _animate()
+                    ball.style.marginLeft = margin_left + 'px';
+                    _animate();
                 },13)
             }
-            _animate()
+            _animate();
         })
 
     }
@@ -59,19 +60,19 @@
     console.log("aaa");
     promiseAnimate(ball_1,100)
         .then(function(){
-            return promiseAnimate(ball_2,200)
+            return promiseAnimate(ball_2,200);
         })
         .then(function(){
-            return promiseAnimate(ball_3,300)
+            return promiseAnimate(ball_3,300);
         })
         .then(function(){
-            return promiseAnimate(ball_3,150)
+            return promiseAnimate(ball_3,150);
         })
         .then(function(){
-            return promiseAnimate(ball_2,150)
+            return promiseAnimate(ball_2,150);
         })
         .then(function(){
-            return promiseAnimate(ball_1,150)
+            return promiseAnimate(ball_1,150);
         })
     //promiseAnimate(ball_2,200)
     console.log("bbb");
